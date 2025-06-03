@@ -35,7 +35,7 @@
         <div class="row g-3">
             <!-- preventivo -->
             <main class="col-md-9">
-                <form class="row">
+                <form class="row" id="form-preventivo">
                     <div>
                         <h3>Richiesta Preventivo</h3>
                         <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo</p>
@@ -54,8 +54,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="job">Tipo di Lavoro</label>
-                        <select class="form-select" aria-label="Default select example">
-                        <option selected>Seleziona il tipo di lavoro</option>
+                        <select class="form-select job-select " aria-label="Default select example" name="job" id="job" required>
+                        <option selected value="">Seleziona il tipo di lavoro</option>
                         <option value="back">Backend Development</option>
                         <option value="front">Frontend Development</option>
                         <option value="project">Project Analysis</option>
@@ -67,7 +67,7 @@
                     </div>
                    <div class="mb-3">
                         <label for="promo" class="form-label">Codice Promozionale (opzionale)</label>
-                        <input type="text" class="form-control" id="promo" name="promo">
+                        <input type="text" class="form-control promo-code" id="promo" name="promo">
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -78,7 +78,7 @@
                         <div class="card  border border-0">
                         <div class="card-body">
                             <h5>Prezzo finale</h5>
-                            <p id="finalPrice"> &euro; --,--</p>
+                            <p id="finalPrice"> &euro; <span class="final-price">--,--</span></p>
                         </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <li class="list-group-item">help@boolfactory.test</li>
                         <li class="list-group-item">+1122334455</li>
                         <li class="list-group-item">
-                            <a href="http://">Help desk</a>
+                            <a href="https://www.google.com/">Help desk</a>
                         </li>
                     </ul>
                 </div>
