@@ -37,9 +37,9 @@ formPreventivo.addEventListener('submit', function(e){
         if(promoCode === code){
             promo= (fullPrice*25)/100
         }
-        else if(  promoCode !== code && promoCode !== ''){
-        alert ('Il codice promozionale non è valido, quindi verrà fornito il prezzo finale senza sconti applicati')
-        }
+        // else if(  promoCode !== code && promoCode !== ''){
+        // alert ('Il codice promozionale non è valido, quindi verrà fornito il prezzo finale senza sconti applicati')
+        // }
         console.log(promo)
 
     }
