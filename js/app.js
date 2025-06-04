@@ -1,7 +1,8 @@
 const formPreventivo = document.getElementById('form-preventivo')
 const formJob = document.querySelector('.job-select')
 const inputCode = document.querySelector('.promo-code')
-const finalPrice= document.querySelector('.final-price')
+const finalPrice= document.querySelector('#final-price')
+// console.log(finalPrice)
 
 formPreventivo.addEventListener('submit', function(e){
     e.preventDefault()
@@ -9,10 +10,9 @@ formPreventivo.addEventListener('submit', function(e){
     const typeOfJob= formJob.value
     const promoCode= inputCode.value.toUpperCase()
     const validCodes= ['YHDNU32', 'JANJC63','PWKCN25','SJDPO96','POCIE24']
-    console.log(validCodes)
-    console.log(typeOfJob)
-    console.log(promoCode.toUpperCase())
-
+    // console.log(validCodes)
+    // console.log(typeOfJob)
+    // console.log(promoCode)
 
     let costPerHour = 0
 
@@ -27,20 +27,22 @@ formPreventivo.addEventListener('submit', function(e){
     }
 
     const fullPrice = 10 * costPerHour
-    console.log(costPerHour, fullPrice)
+    // console.log(costPerHour, fullPrice)
     
     let promo = 0
-
-    for( let i=0; i<validCodes.length; i++){
-        const code= validCodes[i]
-        // console.log(code)
-        if(promoCode === code){
-            promo= (fullPrice*25)/100
+    function isPromo (array){
+        for ( let i= 0; i< array.length; i++){
+            const isPromo = array[i]
+            if ( promoCode === isPromo){
+                return promo = (fullPrice*25)/100
+            } 
         }
-        // else if(  promoCode !== code && promoCode !== ''){
-        // alert ('Il codice promozionale non è valido, quindi verrà fornito il prezzo finale senza sconti applicati')
-        // }
-        console.log(promo)
-
     }
+    isPromo(validCodes)
+    console.log(promo)
+    const userPrice= (fullPrice - promo).toFixed(2)
+
+    console.log(userPrice)
+    finalPrice.innerHTML= (userPrice)
+
 })
