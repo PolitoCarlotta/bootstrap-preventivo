@@ -20,6 +20,11 @@ function isPromo (array){
         isPromo(validCodes)
        if (havePromo === false && inputCode.value !== ''){
         alert(' Il codice inserito non è valido, perciò il prezzo finale verrà calcolato senza applicare sconti')
+        inputCode.classList.remove('is-invalid')
+        inputCode.classList.add('is-invalid')
+       } else if(havePromo === true){
+        inputCode.classList.remove('is-valid')
+        inputCode.classList.add('is-valid')
        }
 
         let costPerHour = 0 
