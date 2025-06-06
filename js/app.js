@@ -43,9 +43,24 @@ function isPromo (array){
         const userPrice= (fullPrice - promo)
 
         console.log(havePromo,costPerHour, fullPrice, promo, userPrice)
-        // document.querySelector('#final-price').innerHTML= new Intl.NumberFormat('it-IT', {
-        //     style: 'currency',
-        //     currency: 'EUR',
-        // }).format(userPrice)
+        const parts = new Intl.NumberFormat('it-IT', {
+            style: 'currency',
+            currency: 'EUR',
+            }).formatToParts(userPrice)
 
-})
+            const currencyPart = parts.find(p => p.type === 'currency')
+            const filteredParts = parts.filter(p => p.type !== 'currency')
+
+        const priceHtml = []
+        priceHtml.push(`<span>${currencyPart.value}</span>`);
+        filteredParts.forEach(part=>{
+            if (part.type === 'decimal' || part.type === 'fraction'){
+                priceHtml.push(`<span class='text-secondary'>${part.value}`)
+            }
+            else{
+                priceHtml.push(part.value)
+            }
+        })
+
+        document.getElementById('final-price').innerHTML= priceHtml.join('')
+    })
