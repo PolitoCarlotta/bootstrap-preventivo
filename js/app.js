@@ -28,15 +28,23 @@ const inputCode = document.querySelector('.promo-code')
 
 const validCodes= ['YHDNU32', 'JANJC63','PWKCN25','SJDPO96','POCIE24',]
 
-function isPromo (array){
-    return array.includes(inputCode.value.toUpperCase());
+function isPromo (array,inputCode){
+    // return array.includes(inputCode.value.toUpperCase());
+
+    for ( let i= 0; i< array.length; i++){
+        console.log(array[i])
+        if(array[i] === inputCode.value.toUpperCase()){
+            return true
+        }
+    }
+    return false
 }
 
 // Submit del form
      formPreventivo.addEventListener('submit', function(e){
         e.preventDefault()
 
-        const havePromo= isPromo(validCodes)
+        const havePromo= isPromo(validCodes,inputCode)
 
        if (havePromo === false && inputCode.value !== ''){
         alert(' Il codice inserito non è valido, perciò il prezzo finale verrà calcolato senza applicare sconti')
