@@ -1,3 +1,27 @@
+// option della select
+const selectOptions = [
+    {
+        text: 'Backend Development',
+        value: 'back'
+    },
+    {
+        text: 'Frontend Development',
+        value:'front'
+    },
+    {
+        text:'Project Analysis',
+        value: 'project'
+    }
+    ]
+    selectOptions.forEach(item => {
+        const elementOption = document.createElement('option')
+        elementOption.value = item.value
+        elementOption.textContent = item.text
+        document.getElementById('job').appendChild(elementOption)
+    })
+
+
+
 const formPreventivo = document.getElementById('form-preventivo')
 const formJob = document.querySelector('.job-select')
 const inputCode = document.querySelector('.promo-code')
@@ -8,7 +32,7 @@ function isPromo (array){
     return array.includes(inputCode.value.toUpperCase());
 }
 
-
+// Submit del form
      formPreventivo.addEventListener('submit', function(e){
         e.preventDefault()
 
@@ -18,7 +42,7 @@ function isPromo (array){
         alert(' Il codice inserito non è valido, perciò il prezzo finale verrà calcolato senza applicare sconti')
         document.getElementById('promo').classList.add('is-invalid')
        }
-       else if(havePromo=== true){
+       else if(havePromo === true){
         document.getElementById('promo').classList.add('is-valid')
        }
 
@@ -43,6 +67,7 @@ function isPromo (array){
         const userPrice= (fullPrice - promo)
 
         console.log(havePromo,costPerHour, fullPrice, promo, userPrice)
+
         const parts = new Intl.NumberFormat('it-IT', {
             style: 'currency',
             currency: 'EUR',
@@ -67,5 +92,5 @@ function isPromo (array){
         setTimeout(() => {
             document.getElementById('promo').classList.remove('is-invalid')
             document.getElementById('promo').classList.remove('is-valid')
-        }, 2000);
+        }, 3000);
     })
