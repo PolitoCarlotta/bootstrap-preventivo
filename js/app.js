@@ -2,29 +2,24 @@ const formPreventivo = document.getElementById('form-preventivo')
 const formJob = document.querySelector('.job-select')
 const inputCode = document.querySelector('.promo-code')
 
+const validCodes= ['YHDNU32', 'JANJC63','PWKCN25','SJDPO96','POCIE24',]
 
-let havePromo = false
 function isPromo (array){
-    for ( let i= 0; i < array.length; i++){
-        if ( inputCode.value.toUpperCase() === array[i]){
-            return havePromo=true
-        } 
-    }
+    return array.includes(inputCode.value.toUpperCase());
 }
 
-    formPreventivo.addEventListener('submit', function(e){
+
+     formPreventivo.addEventListener('submit', function(e){
         e.preventDefault()
 
+        const havePromo= isPromo(validCodes)
 
-        const validCodes= ['YHDNU32', 'JANJC63','PWKCN25','SJDPO96','POCIE24']
-        isPromo(validCodes)
        if (havePromo === false && inputCode.value !== ''){
         alert(' Il codice inserito non è valido, perciò il prezzo finale verrà calcolato senza applicare sconti')
-        inputCode.classList.remove('is-invalid')
-        inputCode.classList.add('is-invalid')
-       } else if(havePromo === true){
-        inputCode.classList.remove('is-valid')
-        inputCode.classList.add('is-valid')
+        document.getElementById('promo').classList.add('is-invalid')
+       }
+       else if(havePromo=== true){
+        document.getElementById('promo').classList.add('is-valid')
        }
 
         let costPerHour = 0 
@@ -68,4 +63,9 @@ function isPromo (array){
         })
 
         document.getElementById('final-price').innerHTML= priceHtml.join('')
+
+        setTimeout(() => {
+            document.getElementById('promo').classList.remove('is-invalid')
+            document.getElementById('promo').classList.remove('is-valid')
+        }, 2000);
     })
